@@ -7,3 +7,17 @@ License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: yourcustomtheme
 */
+
+body{
+    background-color: rgba(160, 160, 160, 0.075);
+}
+
+main{
+    padding: 5% 10% 5% 10%;
+}
+
+article{
+    background-color: #ffffff;
+    padding: 10px 25px 10px 25px;
+    border: solid 1px rgb(91, 91, 91);
+}
