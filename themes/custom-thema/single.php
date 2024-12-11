@@ -8,26 +8,39 @@
 get_header(); // Include the header template part.
 ?>
 
-<main id="main-content" role="main">
+<div id="main" role="main">
     <?php if (have_posts()) : ?>
         <?php while ( have_posts() ) : the_post(); ?>   
-            <article id="post-<?php the_ID(); ?>">
-                <div class="post-header">
+            <article class="post" id="post-<?php the_ID(); ?>">
+                <header>
                     <div class="title">
-                        <h1><?php the_title() ?></h1>
-                        <h2><?php the_excerpt() ?></h1>
+                        <h2><a href="#"><?php the_title()?></a></h2>
+                        <p><?php the_excerpt() ?></p>
                     </div>
                     <div class="meta">
-                        <h3><?php echo get_the_date() ?></h3>
-                        <h4><?php echo get_the_author() ?></h4>
+                            <time class="published" datetime="<?php get_the_date() ?>"><?php echo get_the_date() ?></time>
+                            <a href="#" class="author"><span class="name"><?php the_author() ?></span><img src="images/avatar.jpg" alt="" /></a>
+                        </div>
+                    </header>
+                    
+                    <div class="entry-content">
+                        <?php the_content(); ?>
                     </div>
-                </div>
-                <p><?php the_content() ?></p>
+                    <footer>
+                        <ul class="actions">
+                            <li><a href="single.html" class="button large">Continue Reading</a></li>
+                        </ul>
+                        <ul class="stats">
+                            <li><a href="#">General</a></li>
+                            <li><a href="#" class="icon solid fa-heart">28</a></li>
+                            <li><a href="#" class="icon solid fa-comment">128</a></li>
+                        </ul>
+                    </footer>
             </article>
         <?php endwhile; ?>
     <?php endif; ?>
 
-</main>
+</div>
 
 <?php
 //get_sidebar(); // Include the sidebar template part if you have one.
