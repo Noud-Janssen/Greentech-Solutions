@@ -29,7 +29,7 @@ get_header(); // Include the header template part.
                     </div>
                     <footer>
                         <ul class="actions">
-                            <li><a href="single.html" class="button large">Continue Reading</a></li>
+                            <li><a href="<?php the_permalink() ?>" class="button large">Continue Reading</a></li>
                         </ul>
                         <ul class="stats">
                             <li><a href="#">General</a></li>

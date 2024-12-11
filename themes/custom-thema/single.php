@@ -27,9 +27,6 @@ get_header(); // Include the header template part.
                         <?php the_content(); ?>
                     </div>
                     <footer>
-                        <ul class="actions">
-                            <li><a href="single.html" class="button large">Continue Reading</a></li>
-                        </ul>
                         <ul class="stats">
                             <li><a href="#">General</a></li>
                             <li><a href="#" class="icon solid fa-heart">28</a></li>
