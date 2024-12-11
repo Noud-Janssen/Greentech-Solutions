@@ -1,3 +1,4 @@
+<div id="wrapper">
 <?php
 /**
  * The main template file
@@ -7,12 +8,11 @@
 
 get_header(); // Include the header template part.
 ?>
-
-<main id="main-content" role="main">
+<div id="main" role="main">
     <div class="posts-list">
         <?php if ( have_posts() ) : ?>
             <?php while ( have_posts() ) : the_post(); ?>
-                <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                <article class="post" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                     <header class="post-header">
                         <div class="title">
                             <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
@@ -27,16 +27,15 @@ get_header(); // Include the header template part.
                     <div class="entry-content">
                         <?php the_content(); ?>
                     </div>
-                    
-                    <footer class="entry-footer">
-                        <button>Continue reading</button>
-                        <span class="entry-meta">
-                            <ul class="stats">
-								<li><a href="#">General</a></li>
-								<li><a href="#" class="icon solid fa-heart">28</a></li>
-								<li><a href="#" class="icon solid fa-comment">128</a></li>
-							</ul>
-                        </span>
+                    <footer>
+                        <ul class="actions">
+                            <li><a href="single.html" class="button large">Continue Reading</a></li>
+                        </ul>
+                        <ul class="stats">
+                            <li><a href="#">General</a></li>
+                            <li><a href="#" class="icon solid fa-heart">28</a></li>
+                            <li><a href="#" class="icon solid fa-comment">128</a></li>
+                        </ul>
                     </footer>
                 </article>
             <?php endwhile; ?>
@@ -56,8 +55,9 @@ get_header(); // Include the header template part.
             </article>
         <?php endif; ?>
     </div>
-</main>
+    </div>
+    <?php 
+        get_footer(); // Include the footer template part.
+    ?>
+</div>
 
-<?php
-//get_sidebar(); // Include the sidebar template part if you have one.
-get_footer(); // Include the footer template part.
