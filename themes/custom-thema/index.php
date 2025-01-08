@@ -55,9 +55,10 @@ get_header(); // Include the header template part.
             </article>
         <?php endif; ?>
     </div>
+    <?php get_sidebar(); ?>
     </div>
     <?php 
-        get_footer(); // Include the footer template part.
+        get_footer();
     ?>
 </div>
 

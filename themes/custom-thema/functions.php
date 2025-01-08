@@ -2,18 +2,32 @@
 /**
  * Register custom sidebar
  */
-function custom_theme_sidebar_init() {
-    register_sidebar(array(
-        'name'          => __('Custom Sidebar', 'custom-theme'),
-        'id'            => 'sidebar-1',
-        'description'   => __('Add widgets here to appear in your sidebar.', 'custom-theme'),
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h2 class="widget-title">',
-        'after_title'   => '</h2>',
-    ));
+function custom_sidebar() {
+    register_sidebar(
+        array(
+            'name'          => 'Primary Sidebar',
+            'id'            => 'primary-sidebar',
+            'before_widget' => '<div class="widget">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h3>',
+            'after_title'   => '</h3>',
+        )
+    );
 }
-add_action('widgets_init', 'custom_theme_sidebar_init');
+add_action('widgets_init', 'custom_sidebar');
+
+/**
+ * Unregister default WordPress widgets
+ */
+function remove_default_widgets() {
+    unregister_widget('WP_Widget_Archives');
+    unregister_widget('WP_Widget_Categories');
+    unregister_widget('WP_Widget_Meta');
+    unregister_widget('WP_Widget_Search'); // Optional: Remove default search widget
+    unregister_widget('WP_Widget_Recent_Posts'); // Optional: Remove recent posts widget
+    unregister_widget('WP_Widget_Recent_Comments'); // Optional: Remove recent comments widget
+}
+add_action('widgets_init', 'remove_default_widgets', 11);
 
 /**
  * Load custom 404 error page
@@ -64,3 +78,4 @@ function custom_theme_modify_search_query( $query ) {
     }
 }
 add_action( 'pre_get_posts', 'custom_theme_modify_search_query' );
+?>
