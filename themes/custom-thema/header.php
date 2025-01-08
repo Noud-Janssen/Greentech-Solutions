@@ -3,18 +3,15 @@
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/css/style.css">
     <?php wp_head(); ?>
 </head>
 <div id="wrapper">
 <header id="header">
-    <a href="index.html"><img src="images/logo.svg" alt="" class="logo" /></a>
+    <a href="/"><img src="<?php echo get_template_directory_uri() ?>/assets/logo.svg" alt="" class="logo" /></a>
     <nav class="links">
         <ul>
-            <li><a href="#">Lorem</a></li>
-            <li><a href="#">Ipsum</a></li>
-            <li><a href="#">Feugiat</a></li>
-            <li><a href="#">Tempus</a></li>
-            <li><a href="#">Adipiscing</a></li>
+            <li><a href="/">Home</a></li>
         </ul>
     </nav>
     <nav class="main">
