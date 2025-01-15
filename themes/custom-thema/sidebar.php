@@ -6,26 +6,28 @@
         <!-- Custom Sidebar Content when no widgets are active -->
 
         <div class="widget">
-            <h3>Search</h3>
-            <?php get_search_form(); ?>
+            <form class="search" method="get" action="#">
+                    <input type="text" name="s" placeholder="Search" />
+                </form>
         </div>
         
         <div class="widget">
             <h3>Example Links</h3>
-            <ul>
-                <li><a href="#">Example Link 1</a></li>
-                <li><a href="#">Example Link 2</a></li>
-                <li><a href="#">Example Link 3</a></li>
-            </ul>
+            <div class="sidebar-links">
+                <a href="#">Example Link 1</a>
+                <a href="#">Example Link 2</a>
+                <a href="#">Example Link 3</a>
+                <a href="#">Example Link 4</a>
+                <a href="#">Example Link 5</a>
+            </div>
         </div>
 
         <div class="widget">
-            <h3><?php if ( is_user_logged_in() ) { echo 'Logout'; } else { echo 'Login'; } ?></h3>
             <ul>
                 <?php if ( is_user_logged_in() ) : ?>
-                    <li><a href="<?php echo wp_logout_url(); ?>">Logout</a></li>
+                    <a href="<?php echo wp_logout_url(); ?>" class="button large fit">Logout</a>
                 <?php else : ?>
-                    <li><a href="<?php echo wp_login_url(); ?>">Login</a></li>
+                    <a href="<?php echo wp_login_url(); ?> " class="button large fit">Login</a>
                 <?php endif; ?>
             </ul>
         </div>
