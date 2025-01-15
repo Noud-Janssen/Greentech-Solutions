@@ -28,4 +28,7 @@
         </ul>
     </nav>
 </header>
+<div id="menu">
+    <?php get_sidebar(); ?>
+</div>
 <body <?php body_class(); ?>>

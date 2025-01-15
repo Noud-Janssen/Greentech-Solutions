@@ -54,9 +54,6 @@ get_header(); // Include the header template part.
             </article>
         <?php endif; ?>
     </div>
-    <div id="menu">
-        <?php get_sidebar(); ?>
-    </div>
     </div>
     <?php 
         get_footer();
