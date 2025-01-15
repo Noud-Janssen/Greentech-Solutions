@@ -1,4 +1,3 @@
-<div id="wrapper">
 <?php
 /**
  * The main template file
@@ -60,5 +59,4 @@ get_header(); // Include the header template part.
     <?php 
         get_footer();
     ?>
-</div>
 
