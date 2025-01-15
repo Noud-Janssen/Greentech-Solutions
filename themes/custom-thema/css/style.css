@@ -2864,3 +2864,7 @@ body.is-menu-visible #menu {
 .title h2 a {
     text-decoration: none;
 }
+
+.entry-content > p > img {
+  height: 200px !important;
+}
