@@ -83,8 +83,9 @@ function epc_render_admin_page() {
         }
 
         if (!empty($title)) {
-
-            $joke_content = file_get_contents("https://v2.jokeapi.dev/joke/Any?format=txt");
+            if ($use_joke == "on") {
+                $joke_content = file_get_contents("https://v2.jokeapi.dev/joke/Any?format=txt");
+            }
 
 
             // Combine the image HTML and post content
