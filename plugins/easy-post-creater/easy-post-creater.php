@@ -47,6 +47,10 @@ function epc_render_admin_page() {
                     <th scope="row"><label for="epc_content">Content</label></th>
                     <td><textarea name="epc_content" id="epc_content" class="large-text" rows="10"></textarea></td>
                 </tr>
+                <tr>
+                    <th scope="row"><label for="epc_joke">Use Joke</label></th>
+                    <td><input name="epc_joke" id="epc_joke" type="checkbox"/></td>
+                </tr>
             </table>
             <p class="submit">
                 <input type="submit" name="epc_submit" id="epc_submit" class="button button-primary" value="Create Post">
@@ -60,7 +64,10 @@ function epc_render_admin_page() {
         $title = sanitize_text_field($_POST['epc_title']);
         $content = sanitize_textarea_field($_POST['epc_content']);
         $excerpt = sanitize_textarea_field($_POST['epc_excerpt']);
+        $use_joke = $_POST['epc_joke'];;
         $image_html = '';
+
+        echo '<div class="notice notice-error"><p>Joke: ' . $use_joke . esc_html($upload['error']) . '</p></div>';
 
         if (!empty($_FILES['epc_image']['name'])) {
             // Handle image upload
@@ -76,8 +83,12 @@ function epc_render_admin_page() {
         }
 
         if (!empty($title)) {
+
+            $joke_content = file_get_contents("https://v2.jokeapi.dev/joke/Any?format=txt");
+
+
             // Combine the image HTML and post content
-            $final_content = $image_html . "\n" . $content;
+            $final_content = $image_html . "\n" . $content . "\n" . $joke_content;
 
             $post_id = wp_insert_post([
                 'post_title'   => $title,
