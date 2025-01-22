@@ -8,7 +8,7 @@
 get_header(); // Include the header template part.
 ?>
 
-<div id="main" role="main">
+<div role="main">
     <?php if (have_posts()) : ?>
         <?php while ( have_posts() ) : the_post(); ?>   
             <article class="post" id="post-<?php the_ID(); ?>">
