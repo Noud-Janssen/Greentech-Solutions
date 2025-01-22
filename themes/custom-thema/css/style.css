@@ -2131,6 +2131,7 @@ ul.posts article header > :last-child {
 .mini-posts {
   display: flex;
   flex-direction: column;
+  gap: 2em;
 }
 
 
@@ -2740,6 +2741,11 @@ body.single #wrapper {
   font-size: 2em;
   font-weight: 900;
 }
+.intro-header{
+  font-size: 2em;
+  font-weight: 900;
+}
+
 #intro header p {
   font-size: 0.8em;
 }

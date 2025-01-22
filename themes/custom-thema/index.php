@@ -12,7 +12,7 @@ get_header(); // Include the header template part.
         <!-- Intro -->
         <div class="intro">
             <header>
-                <h2>GreenTech Solutions</h2>
+                <h2 class="intro-header" >GreenTech Solutions</h2>
                 <p>Lorem ipsum</p>
             </header>
         </div>
@@ -27,7 +27,7 @@ get_header(); // Include the header template part.
                             <time class="published" datetime="<?php get_the_date() ?>"><?php echo get_the_date() ?></time>
                             <a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a>
                         </header>
-                        <a href="single.html" class="image"><?php getTheFirstImage(); ?></a>
+                        <a href="<?php the_permalink(); ?>" class="image"><?php getTheFirstImage(); ?></a>
                     </article>
                 <?php endwhile; ?>
             </div>
