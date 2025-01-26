@@ -1851,9 +1851,11 @@ input[type=radio] + label:before {
   display: block;
   margin: 0 0 3em 0;
   width: 100%;
+  height: auto;
 }
 .image.featured img {
   width: 100%;
+  height: auto;
 }
 @media screen and (max-width: 736px) {
   .image.featured {

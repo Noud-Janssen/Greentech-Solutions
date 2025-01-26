@@ -84,7 +84,8 @@ get_header(); // Include the header template part.
                         </div>
                     </header>
                     
-                    <div class="entry-content">
+                    <!-- The content -->
+                    <div class="entry-content image featured">
                         <?php the_content(); ?>
                     </div>
                     <footer>
