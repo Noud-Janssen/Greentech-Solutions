@@ -13,6 +13,7 @@
         
         <div class="widget">
             <h3>Example Links</h3>
+            <!-- Example links -->
             <div class="sidebar-links">
                 <a href="#">Example Link 1</a>
                 <a href="#">Example Link 2</a>
@@ -22,6 +23,7 @@
             </div>
         </div>
 
+        <!-- Login or logout based on if user is logged in -->
         <div class="widget">
             <ul>
                 <?php if ( is_user_logged_in() ) : ?>

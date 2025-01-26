@@ -69,10 +69,17 @@ function getTheFirstImage() {
 
 
 /**
- * Modify the search query to include post title, content, and excerpt
+ * Modify the search query to include post title, content, and excerpt(only the main Post-list)
  */
 function custom_theme_modify_search_query( $query ) {
+    // Check if we are on a search page, not in the admin area, and it is the main query
     if ( ! is_admin() && $query->is_main_query() && $query->is_search() ) {
+        // Exclude search results from affecting the side-posts section
+        // Make sure to exclude side posts by checking the specific part of the page
+        if ( ! is_home() && ! is_front_page() ) {
+            return; // Skip the modification on side posts
+        }
+
         $search_term = get_query_var('s');
 
         // Modify query to search in post_title, post_content, and post_excerpt
@@ -87,6 +94,7 @@ function custom_theme_modify_search_query( $query ) {
                 return $search;
             }
 
+            // Custom SQL search logic
             $search = $wpdb->prepare(
                 " AND (
                     {$wpdb->posts}.post_title LIKE %s
@@ -103,4 +111,6 @@ function custom_theme_modify_search_query( $query ) {
     }
 }
 add_action( 'pre_get_posts', 'custom_theme_modify_search_query' );
+
+
 ?>

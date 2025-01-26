@@ -8,33 +8,44 @@
 get_header(); // Include the header template part.
 ?>
 <div id="main" role="main">
-    <div class="side-posts">
-        <!-- Intro -->
-        <div class="intro">
-            <header>
-                <h2 class="intro-header" >GreenTech Solutions</h2>
-                <p>Lorem ipsum</p>
-            </header>
-        </div>
+<div class="side-posts">
+    <!-- Intro -->
+    <div class="intro">
+        <header>
+            <h2 class="intro-header" >GreenTech Solutions</h2>
+            <p>Lorem ipsum</p>
+        </header>
+    </div>
 
-        <!-- Mini Posts -->
-        <div>
-            <div class="mini-posts">
-                <!-- Loop through the posts -->
-                <?php while ( have_posts() ) : the_post(); ?>
-                    <article class="mini-post">
-                        <header>
-                            <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-                            <time class="published" datetime="<?php get_the_date() ?>"><?php echo get_the_date() ?></time>
-                            <a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a>
-                        </header>
-                        <a href="<?php the_permalink(); ?>" class="image"><?php getTheFirstImage(); ?></a>
-                    </article>
-                <?php endwhile; ?>
-            </div>
+    <!-- Mini Posts -->
+    <div>
+        <div class="mini-posts">
+            <?php
+            // Custom WP_Query for mini-posts that is not affected by search
+            $mini_posts_query = new WP_Query( array(
+                'post_type' => 'post',  // Specify post type (or your custom post type)
+                'posts_per_page' => 5,  // Set number of posts you want to display
+                's' => '',  // Ensure no search term is passed to this query
+            ) );
+
+            // Loop through the mini posts
+            if ( $mini_posts_query->have_posts() ) :
+                while ( $mini_posts_query->have_posts() ) : $mini_posts_query->the_post();
+            ?>
+            <!-- Individual posts -->
+                <article class="mini-post">
+                    <header>
+                        <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                        <time class="published" datetime="<?php get_the_date() ?>"><?php echo get_the_date() ?></time>
+                        <a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a>
+                    </header>
+                    <a href="<?php the_permalink(); ?>" class="image"><?php getTheFirstImage(); ?></a>
+                </article>
+            <?php endwhile; endif; wp_reset_postdata(); ?>
         </div>
-        
-        <!-- About -->
+    </div>
+
+    <!-- About -->
         <div class="blurb">
             <h2>About</h2>
             <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod amet placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at phasellus sed ultricies.</p>
@@ -46,6 +57,7 @@ get_header(); // Include the header template part.
         <!-- Footer -->
         <div id="footer">
             <ul class="icons">
+                <!-- Example links -->
                 <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
                 <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
                 <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
@@ -55,9 +67,11 @@ get_header(); // Include the header template part.
             <p class="copyright">&copy; Untitled.</p>
         </div>
     </div>
+    <!-- All posts (Effected by search query) -->
     <div class="posts-list">
         <?php if ( have_posts() ) : ?>
             <?php while ( have_posts() ) : the_post(); ?>
+            <!-- Individual post -->
                 <article class="post" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                     <header class="post-header">
                         <div class="title">
