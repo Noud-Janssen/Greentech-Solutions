@@ -8,7 +8,7 @@
 get_header();
 ?>
 
-<main>
+<main class="page-404">
     <section class="error-404">
         <div class="error-content">
             <h1 class="error-title">404</h1>

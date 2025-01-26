@@ -2892,6 +2892,20 @@ body.is-menu-visible #menu {
   height: 200px !important;
 }
 
+.page-404{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 70vh;
+}
+
+.error-title{
+  font-size: 3em;
+  font-weight: 900;
+}
+
 @media screen and (max-width: 980px) {
   #main{
     padding: 50px;
