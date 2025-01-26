@@ -18,7 +18,6 @@ get_header(); // Include the header template part.
     </div>
 
     <!-- Mini Posts -->
-    <div>
         <div class="mini-posts">
             <?php
             // Custom WP_Query for mini-posts that is not affected by search
@@ -37,13 +36,11 @@ get_header(); // Include the header template part.
                     <header>
                         <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
                         <time class="published" datetime="<?php get_the_date() ?>"><?php echo get_the_date() ?></time>
-                        <a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a>
                     </header>
                     <a href="<?php the_permalink(); ?>" class="image"><?php getTheFirstImage(); ?></a>
                 </article>
             <?php endwhile; endif; wp_reset_postdata(); ?>
         </div>
-    </div>
 
     <!-- About -->
         <div class="blurb">
@@ -80,14 +77,15 @@ get_header(); // Include the header template part.
                         </div>
                         <div class="meta">
                             <time class="published" datetime="<?php get_the_date() ?>"><?php echo get_the_date() ?></time>
-                            <a href="#" class="author"><span class="name"><?php the_author() ?></span><img src="images/avatar.jpg" alt="" /></a>
+                            <a href="#" class="author"><span class="name"><?php the_author() ?></a>
                         </div>
                     </header>
                     
                     <!-- The content -->
                     <div class="entry-content image featured">
-                        <?php the_content(); ?>
+                        <?php echo custom_content_length(get_the_content(), 200); ?>
                     </div>
+
                     <footer>
                         <ul class="actions">
                             <li><a href="<?php the_permalink() ?>" class="button large">Continue Reading</a></li>

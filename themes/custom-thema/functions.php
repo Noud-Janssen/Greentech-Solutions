@@ -67,6 +67,32 @@ function getTheFirstImage() {
     }
 }
 
+/**
+ * Custom content length
+ */
+function custom_content_length($content, $limit = 200) {
+    // Match the first image tag if it exists
+    preg_match('/<img[^>]*>/i', $content, $image_match);
+
+    // Extract the image HTML or set it to empty
+    $image_html = $image_match[0] ?? '';
+
+    // Remove the image tag from the content
+    $content_without_image = preg_replace('/<img[^>]*>/i', '', $content);
+
+    // Strip remaining HTML tags from the text content
+    $clean_text = wp_strip_all_tags($content_without_image);
+
+    // Truncate the text content to the specified limit
+    if (strlen($clean_text) > $limit) {
+        $clean_text = substr($clean_text, 0, $limit) . '...';
+    }
+
+    // Combine the image and truncated text
+    return $image_html . '<p>' . $clean_text . '</p>';
+}
+
+
 
 /**
  * Modify the search query to include post title, content, and excerpt(only the main Post-list)

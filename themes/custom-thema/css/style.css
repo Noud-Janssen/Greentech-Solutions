@@ -2891,3 +2891,35 @@ body.is-menu-visible #menu {
 .entry-content > p > img {
   height: 200px !important;
 }
+
+@media screen and (max-width: 980px) {
+  #main{
+    padding: 50px;
+    flex-direction: column;
+    gap: 1em;
+  }
+  
+  .side-posts {
+    width: 100%;	
+  }
+
+  .mini-posts{
+    display: none;
+  }
+  
+  .blurb{
+    display: none;
+  }
+
+  #footer {
+    display: none;
+  }
+
+  .posts-list {
+    width: 100%;
+  }
+
+  .post-container{
+    margin: 25px 50px 25px 50px;
+  }
+}

@@ -10,7 +10,8 @@ get_header(); // Include the header template part.
 
 <div role="main">
     <?php if (have_posts()) : ?>
-        <?php while ( have_posts() ) : the_post(); ?>   
+        <?php while ( have_posts() ) : the_post(); ?>  
+        <div class="post-container"> 
             <article class="post" id="post-<?php the_ID(); ?>">
                 <header>
                     <div class="title">
@@ -34,6 +35,7 @@ get_header(); // Include the header template part.
                         </ul>
                     </footer>
             </article>
+        </div>
         <?php endwhile; ?>
     <?php endif; ?>
 
