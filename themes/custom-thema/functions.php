@@ -44,17 +44,29 @@ function custom_404_template($template) {
 add_filter('template_include', 'custom_404_template');
 
 function getTheFirstImage() {
-    $files = get_children('post_parent='.get_the_ID().'&post_type=attachment&post_mime_type=image');
-    if($files) :
+    $post_content = get_the_content();
+    $pattern = '/<img[^>]+src=["\']([^"\']+)["\'][^>]*>/i';
+    if (preg_match($pattern, $post_content, $matches)) {
+        // Inline image found
+        $image_src = $matches[1];
+        echo "<img src='$image_src' class='thumbnail' />";
+        return;
+    }
+
+    // Fallback: check for attached images
+    $files = get_children([
+        'post_parent'    => get_the_ID(),
+        'post_type'      => 'attachment',
+        'post_mime_type' => 'image',
+    ]);
+    if ($files) {
         $keys = array_reverse(array_keys($files));
-        $j=0; $num = $keys[$j];
-        $image=wp_get_attachment_image($num, 'large', false);
-        $imagepieces = explode('"', $image);
-        $imagepath = $imagepieces[1];
-        $thumb=wp_get_attachment_thumb_url($num);
+        $num = $keys[0];
+        $thumb = wp_get_attachment_thumb_url($num);
         echo "<img src='$thumb' class='thumbnail' />";
-    endif;
+    }
 }
+
 
 /**
  * Modify the search query to include post title, content, and excerpt

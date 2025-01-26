@@ -2132,6 +2132,7 @@ ul.posts article header > :last-child {
   display: flex;
   flex-direction: column;
   gap: 2em;
+  margin-bottom: 4em;
 }
 
 

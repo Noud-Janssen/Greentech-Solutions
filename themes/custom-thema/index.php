@@ -20,6 +20,7 @@ get_header(); // Include the header template part.
         <!-- Mini Posts -->
         <div>
             <div class="mini-posts">
+                <!-- Loop through the posts -->
                 <?php while ( have_posts() ) : the_post(); ?>
                     <article class="mini-post">
                         <header>
